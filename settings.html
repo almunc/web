@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+</head>
+<body>
+    <h1>Profile Settings</h1>
+        <form>
+            <fieldset>
+                <legend>Base Data</legend>
+                First Name <input type="text"><br>
+                Last Name <input type="text"><br>
+                Coffe or Tea? 
+                <select name="coffeOrTea" id="coffeeOrTea">
+                    <option value="Neither nor">Neither nor</option>
+                    <option value="Coffe">Coffee</option>
+                    <option value="Tea">Tea</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <legend>Tell something about You</legend>
+                <textarea name="aboutMe" id="aboutMe" cols="30" rows="2"></textarea>
+            </fieldset>
+            <fieldset>
+                <legend>Preferred Chat Layout</legend>
+                <p><input type="radio" name="inline" id="inline">Username and message in one line</p>
+                <p><input type="radio" name="outline" id="outlien">Username and message in separated lines</p>
+            </fieldset>
+            <a href="friends.html"><input type="button" value="Cancel"></a>
+            <button type="submit">Save</button>
+        </form>
+</body>
+</html>
