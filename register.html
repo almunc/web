@@ -2,15 +2,17 @@
 <html>
     <head>
         <title>Register</title>
+        <link href="stylesheet.css" rel="stylesheet">
     </head>
     <body>
-        <img src="./images/user.png" alt="user" style="width: 100px; height: 100px;">
-        <h1>
+        <img src="./images/user.png" alt="user" style="width: 100px; height: 100px;" class="general-img"> <br>
+        <h1 class="centered">
             Register yourself
-        </h1>
+        </h1> <br>
 
-        <fieldset>
+        <fieldset class="fieldset">
             <legend>Register</legend>
+            <div class="centered">
             <form action="friends.html" method="GET">
                 <label for="Username">Username</label>
                 <input type="text" id="Username"
@@ -21,13 +23,22 @@
                 <label for="ConfirmPassword"> Confirm Password</label>
                 <input type="password" id="ConfirmPassword"
                     name="ConfirmPassword" placeholder="Confirm Password" required>
-        </fieldset>
-        <a href="login.html">
-            <input type="button" value="Cancel">
-        </a>
-        <a href="friends.html">
-            <input type="submit" value="Create Account">
-        </a>
+            </div>
+            </fieldset> <br>
+            <table class="centered">
+                <tr>
+                    <td>
+                        <a href="login.html">
+                            <input type="button" value="Cancel">
+                            </a>
+                    </td>
+                    <td>
+                        <a href="friends.html">
+                            <input type="submit" value="Create Account">
+                        </a>
+                    </td>
+                </tr>
+    </table>
         </form>
     </body>
 </html>

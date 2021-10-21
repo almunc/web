@@ -1,0 +1,64 @@
+
+/* Task b: define fonts, general background-color*/
+body {
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 14px;
+   background-color: #ecebeb;
+}
+
+/* Task a: position general elements center and define max-width*/
+.centered {
+    text-align: center;
+    margin: auto;
+    max-width: 900px;
+}
+
+/* general img-layout except profile.html img */
+.general-img {
+    display: block;
+    margin: auto;
+    border-radius: 19px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    max-width: 900px;
+}
+
+/* specific profile.img implementation following*/
+.profile-align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-fieldset {
+background-color: white;
+max-width: 500px;
+}
+
+.profile-img {
+    width: 280px;
+    height: 280px;
+    margin-right: 1cm;
+}
+/* specific profile.html implementation ending
+----------------------------------------------*/
+
+/* not allowed to use <style> using classes instead*/
+.fieldset {
+    border-style: dashed;
+    background-color: white;
+}
+
+.hr {
+    border-style: dashed;
+}
+
+.blue-links {
+    color: blue;
+    text-decoration: none;
+}
+
+.red-links {
+    color: red;
+    text-decoration: none;
+}
