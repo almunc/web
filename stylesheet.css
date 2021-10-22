@@ -53,6 +53,30 @@ max-width: 500px;
     border-style: dashed;
 }
 
+.field-layout {
+    padding-left: 1em;
+    list-style-type: none;
+    background-color: white;
+}
+
+.el-vert {
+    display: flex;
+}
+
+.li-right {
+    margin-right: 4cm;
+    margin-left: auto;
+    text-decoration: none;
+    background-color: rgb(84, 84, 223);
+    color: white;
+}
+
+.chat-timer {
+    margin-right: 4cm;
+    margin-left: auto;
+    color: rgb(212, 211, 211);
+}
+
 .blue-links {
     color: blue;
     text-decoration: none;
@@ -61,4 +85,9 @@ max-width: 500px;
 .red-links {
     color: red;
     text-decoration: none;
+}
+
+.blanco-links {
+    text-decoration: none;
+    color: black;
 }
