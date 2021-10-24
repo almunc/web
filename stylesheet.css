@@ -1,16 +1,18 @@
 
-/* Task b: define fonts, general background-color*/
+/* Task a & b: define general fonts, background-color, align, width*/
 body {
    font-family: Arial, Helvetica, sans-serif;
    font-size: 14px;
    background-color: #ecebeb;
+   max-width: 900px;
+   align-items: center;
+   margin: auto;
 }
 
-/* Task a: position general elements center and define max-width*/
-.centered {
+/* text-elements getting centered*/
+.text-centered {
     text-align: center;
     margin: auto;
-    max-width: 900px;
 }
 
 /* general img-layout except profile.html img */
