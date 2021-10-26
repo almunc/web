@@ -41,10 +41,22 @@ body {
     box-sizing: border-box;
 }
 
-.col1 {
-    width: 280px;
-    float: left;
-    margin-right: 2%;
+@media only screen and (max-width: 899px) {
+    .col1 {
+        width: 100%;
+        float: left;
+        margin-right: 2%;
+        text-align: center !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+}
+@media only screen and (min-width: 899.1px) {
+    .col1 {
+        width: 280px;
+        float: left;
+        margin-right: 2%;
+    }
 }
 
 .col2 {
