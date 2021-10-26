@@ -26,22 +26,31 @@ body {
 }
 
 /* specific profile.img implementation following*/
-.profile-align {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .profile-fieldset {
-background-color: white;
-max-width: 500px;
+    background-color: white;
 }
 
 .profile-img {
     width: 280px;
     height: 280px;
-    margin-right: 1cm;
+    margin-right: 1%;
 }
+
+.grid {
+    box-sizing: border-box;    
+}
+
+.col1 {
+    max-width: 280px;
+    float: left;
+}
+
+.col2 {
+    width: 620px;
+    max-width: 99%;
+    float: left;
+}
+
 /* specific profile.html implementation ending
 ----------------------------------------------*/
 
