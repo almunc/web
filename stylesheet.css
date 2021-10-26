@@ -84,12 +84,74 @@ max-width: 500px;
     text-decoration: none;
 }
 
+.blue-links:hover {
+    color:rgb(116, 116, 185);
+    font-weight: bold;
+}
+
 .red-links {
     color: red;
     text-decoration: none;
 }
 
+.red-links:hover {
+    color:salmon;
+    font-weight: bold;
+}
+
 .blanco-links {
     text-decoration: none;
     color: black;
+}
+
+.textinput {
+    border: solid 1px grey;
+}
+
+
+
+.messageinput {
+    border: solid 1px grey;
+    height: 30px;
+    width: 75%
+}
+
+.messageinput::placeholder {
+    font-size: 14px;
+    padding-left: 12px;
+}
+
+.submitbutton {
+    background-color: rgb(155, 155, 155);
+    border: none;
+    height: 34px;
+    width: 20%;
+    float: right;
+    color: white;
+    font-size: 14px;
+}
+
+.greybutton {
+    background-color: rgb(155, 155, 155);
+    border: none;
+    height: 34px;
+    font-size: 14px;
+    color: white;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.bluebutton {
+    background-color: rgb(22, 127, 251);
+    border: none;
+    height: 34px;
+    font-size: 14px;
+    color: white;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.formularinput {
+    border: solid 1px grey;
+    height: 20px;
 }
