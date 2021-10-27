@@ -12,20 +12,40 @@
         <form>
             <fieldset class="fieldset">
                 <legend>Base Data</legend>
-                <div class="text-centered">
-                <label for="fristName">First Name</label> <input type="text" name="firstName" id="firstName" placeholder="Your name"><br>
-                <label for="fristName">Last Name</label> <input type="text" name="lastName" id="lastName" placeholder="Your surname"><br>
-                <label for="coffeeOrTea">Coffe or Tea?</label>
-                <select name="coffeOrTea" id="coffeeOrTea">
-                    <option value="Neither nor">Neither nor</option>
-                    <option value="Coffe">Coffee</option>
-                    <option value="Tea">Tea</option>
-                </select>
-                </div>
+                <table class="text-centered">
+                    <tr>
+                        <td class="lefttable">
+                            <label for="fristName">First Name</label> 
+                        </td>
+                        <td>
+                            <input class="formularinput" type="text" name="firstName" id="firstName" placeholder="Your name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lefttable">
+                            <label for="fristName">Last Name</label>
+                        </td>
+                        <td>
+                            <input class="formularinput" type="text" name="lastName" id="lastName" placeholder="Your surname">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lefttable">
+                            <label for="coffeeOrTea">Coffe or Tea?</label>
+                        </td>
+                        <td>
+                            <select name="coffeOrTea" id="coffeeOrTea">
+                                <option value="Neither nor">Neither nor</option>
+                                <option value="Coffe">Coffee</option>
+                                <option value="Tea">Tea</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
             </fieldset> <br>
             <fieldset class="fieldset">
                 <legend>Tell Something About You</legend>
-                <textarea name="aboutMe" id="aboutMe" cols="20" rows="1" placeholder="Leave a comment here"></textarea>
+                <textarea class="settingsTextArea"name="aboutMe" id="aboutMe" cols="20" rows="10" placeholder="Leave a comment here"></textarea>
             </fieldset> <br>
             <fieldset class="fieldset">
                 <legend>Preferred Chat Layout</legend>

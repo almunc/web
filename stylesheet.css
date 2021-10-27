@@ -28,6 +28,7 @@ body {
 /* specific profile.img implementation following*/
 .profile-fieldset {
     background-color: white;
+    border: solid 1px rgb(210, 210, 210);
 }
 
 .profile-img {
@@ -68,6 +69,8 @@ body {
     padding-left: 1em;
     list-style-type: none;
     background-color: white;
+    border: solid 1px rgb(210, 210, 210);
+    border-radius: 5px;
 }
 
 .el-vert {
@@ -75,21 +78,21 @@ body {
 }
 
 .li-right {
-    margin-right: 4cm;
+    margin-right: 2%;
     margin-left: auto;
     text-decoration: none;
-    background-color: rgb(84, 84, 223);
+    background-color: rgb(44, 113, 243);
     color: white;
 }
 
 .chat-timer {
-    margin-right: 4cm;
+    margin-right: 2%;
     margin-left: auto;
     color: rgb(212, 211, 211);
 }
 
 .blue-links {
-    color: blue;
+    color: rgb(22, 127, 251);
     text-decoration: none;
 }
 
@@ -164,3 +167,22 @@ body {
     border: solid 1px grey;
     height: 20px;
 }
+
+.lefttable {
+    text-align: right;   
+}
+
+select {
+    -webkit-appearance: none;
+    border-radius: 0px;
+    border: solid 1px grey;
+    height: 24px;
+    width: 145px;
+    background-color: white;
+}
+
+.settingsTextArea {
+    width: 100%;
+    font-size: 14px;
+}
+
