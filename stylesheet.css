@@ -180,10 +180,15 @@ body {
 .formularinput {
     border: solid 1px grey;
     height: 20px;
+    width: 100%;
 }
 
 .lefttable {
     text-align: right;   
+}
+
+.righttable {
+    width: 150px;
 }
 
 select {
@@ -191,7 +196,7 @@ select {
     border-radius: 0px;
     border: solid 1px grey;
     height: 24px;
-    width: 145px;
+    width: 103%;
     background-color: white;
 }
 
@@ -200,3 +205,18 @@ select {
     font-size: 14px;
 }
 
+.settingSelect {
+    background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+    background-position:
+        calc(100% - 15px) calc(0.8em),
+        calc(100% - 10px) calc(0.8em),
+        calc(100% - 2.5em);
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+    background-repeat: no-repeat;
+}
