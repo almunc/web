@@ -1,5 +1,3 @@
-
-/* Task a & b: define general fonts, background-color, align, width*/
 body {
    font-family: Arial, Helvetica, sans-serif;
    font-size: 14px;
@@ -219,4 +217,17 @@ select {
         5px 5px,
         1px 1.5em;
     background-repeat: no-repeat;
+}
+
+.error-input {
+    border: 1px solid red;
+    height: 20px;
+    width: 100%;
+}
+
+.valid-input {
+    border: 1px solid rgb(51, 231, 51);
+    height: 20px;
+    width: 100%;
+
 }

@@ -3,6 +3,7 @@
     <head>
         <title>Register</title>
         <link href="stylesheet.css" rel="stylesheet">
+        <script defer src="register.js"></script>
     </head>
     <body>
         <br><br>
@@ -10,11 +11,15 @@
         <h1 class="text-centered">
             Register yourself
         </h1> <br>
-
         <fieldset class="fieldset">
             <legend>Register</legend>
             <table class="text-centered">
-            <form action="friends.html" method="GET">
+            <form  id="form" action="friends.html" method="GET">
+                <script>
+                    window.chatToken = "...";
+                    window.chatCollectionId = "e8ae0ad8-ede5-410b-b831-e19691f98efb";
+                    window.chatServer = "https://online-lectures-cs.thi.de/chat";
+                  </script>
                 <tr>
                     <td class="lefttable">
                         <label for="Username">Username</label>
@@ -48,7 +53,7 @@
                 <tr>
                     <td>
                         <a href="login.html">
-                            <input class="greybutton" type="button" value="Cancel">
+                            <input class="greybutton" type="button" value="Cancel" id="button">
                             </a>
                     </td>
                     <td>
