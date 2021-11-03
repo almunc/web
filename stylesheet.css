@@ -137,12 +137,12 @@ body {
 .messageinput {
     border: solid 1px grey;
     height: 30px;
-    width: 75%
+    width: 75%;
+    padding-left: 12px;
 }
 
 .messageinput::placeholder {
     font-size: 14px;
-    padding-left: 12px;
 }
 
 .submitbutton {
@@ -230,4 +230,9 @@ select {
     height: 20px;
     width: 100%;
 
+}
+
+.userList {
+    margin-left: 20px;
+    font-size: 14px;
 }

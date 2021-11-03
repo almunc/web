@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="stylesheet.css" rel="stylesheet">
+    <script defer src="js/friends.js"></script>
+    <script>
+        window.chatToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjM1ODU2MzYzfQ.w-ELZ7Kml1qEPaJi9JJyQaeRh0Z6bUKK1jBWM4FWWMY";
+        window.chatCollectionId = "95caaad9-3863-4f4b-b28d-feb59be76b47";
+        window.baseURL = "https://online-lectures-cs.thi.de/chat";
+    </script>
     <title>Friends</title>
 </head>
 <body>
@@ -37,13 +43,15 @@
     </ol>
     <hr class="hr">
     
-    <form action="friends.html" method="get">
+    <form action="friends.html" method="get" id="friendForm">
 
         <input class="messageinput" type="text" id="Add" name="Add" placeholder="Add Friend to List">
 
-        <button class="submitbutton">Add</button>
-
+        <input class="submitbutton" type="submit" id="submitbutton" value="Add">
     </form>
+    <div id="users">
+
+    </div>
 </form>
 </body>
 </html>
