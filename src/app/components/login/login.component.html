@@ -1,0 +1,83 @@
+<body>
+    
+
+    <br />
+    <br />
+    <img src="./assets/images/chat.png" width="100" height="100" class="general-img" />
+    <br />
+    <h1 class="text-centered">Please sign in</h1>
+    <br />
+    <div class="display-msg" *ngIf="failed == true">Authentification failed!</div>
+    <form>
+    <fieldset class="fieldset">
+      <legend>Login</legend>
+      <div class="text-centered">
+        
+          <table class="text-centered">
+            <script>
+              window.chatToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjM1ODU2MzYzfQ.w-ELZ7Kml1qEPaJi9JJyQaeRh0Z6bUKK1jBWM4FWWMY";
+              window.chatCollectionId = "95caaad9-3863-4f4b-b28d-feb59be76b47";
+              window.chatServer = "https://online-lectures-cs.thi.de/chat";
+            </script>
+            <tbody>
+              <tr>
+                <td class="lefttable">
+                  <label for="Username">Username</label>
+                </td>
+                <td>
+                  <input
+                    class="formularinput"
+                    [(ngModel)]="username"
+                    type="text"
+                    id="Username"
+                    name="Username"
+                    placeholder="Username"
+                    required=""
+                    #name="ngModel"
+                    
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td class="lefttable">
+                  <label for="password">Password</label>
+                </td>
+                <td>
+                  <input
+                    class="formularinput"
+                    [(ngModel)]="password"
+                    type="Password"
+                    id="Password"
+                    name="Password"
+                    placeholder="Password"
+                    required=""
+                    #pw="ngModel"
+                    
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <!--</form>--> 
+      </div>
+    </fieldset>
+    <br />
+    <table class="text-centered">
+      <tbody>
+        <tr>
+          <td>
+              
+            <a href="register">
+              <input class="greybutton" type="button" value="Register" />
+            </a>
+          </td>
+          <td>
+            
+              <button class="bluebutton" type="button" value="Login" (click)="performAuthentification()">Login</button>
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  </body>
