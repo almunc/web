@@ -53,7 +53,7 @@
                     </tr>
                     <tr> <br>
                         <td>
-                         <div class="display-msg" *ngIf="(cpw.touched && cpw.value != pw.value)">Password does not match</div> 
+                         <div class="display-msg" *ngIf="(cpw.touched) && cpw.value != pw.value">Password does not match</div> 
                         </td>
                     </tr>
                 </table>
@@ -67,10 +67,10 @@
                                 </a>
                         </td>
                         <td>
-                            <a href="friends">
-                                <input class="bluebutton" type="button"
+                            
+                                <input class="bluebutton" type="submit"
                                 value="Create Account" (click)="createAccount()" (click)="registerUser()" [disabled]="usernameOk == false || passwordOk == false">
-                            </a>
+                            
                         </td>
                     </tr>
             </table>

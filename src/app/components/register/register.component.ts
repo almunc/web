@@ -31,11 +31,6 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  public registerUser(): void {
-    this.backendService.register(this.username, this.password);
-    this.router.navigate(["/friends"]);
-  }
-
   public checkUsername(): void {
     if (this.username.length < 3) {
       this.usernameOk = false;
@@ -67,4 +62,14 @@ export class RegisterComponent implements OnInit {
     this.checkConfirm();
     this.userExists();
   }
+
+
+  public registerUser(): void {
+    //this.createAccount();
+    //if(this.passwordOk == true && this.usernameOk == true) {
+    this.backendService.register(this.username, this.password);
+    this.router.navigate(["/friends"]);
+    //}
+  }
+
 }
