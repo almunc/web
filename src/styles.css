@@ -1,239 +1,239 @@
-/* You can add global styles to this file, and also import other style files */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    background-color: #ecebeb;
-    max-width: 900px;
-    align-items: center;
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 14px;
+   background-color: #ecebeb;
+   max-width: 900px;
+   align-items: center;
+   margin: auto;
+}
+
+/* text-elements getting centered*/
+.text-centered {
+    text-align: center;
     margin: auto;
- }
- 
- /* text-elements getting centered*/
- .text-centered {
-     text-align: center;
-     margin: auto;
- }
- 
- /* general img-layout except profile.html img */
- .general-img {
-     display: block;
-     margin: auto;
-     border-radius: 19px;
-     -webkit-border-radius: 100%;
-     -moz-border-radius: 100%;
-     max-width: 900px;
- }
- 
- /* specific profile.img implementation following*/
- .profile-fieldset {
-     background-color: white;
-     border: solid 1px rgb(210, 210, 210);
- }
- 
- .profile-img {
-     width: 280px;
-     text-align: center !important;
-     justify-content: center !important;
-     align-items: center !important;
- }
- 
- .grid {
-     box-sizing: border-box;
- }
- 
- @media only screen and (max-width: 899px) {
-     .col1 {
-         width: 100%;
-         float: left;
-         margin-right: 2%;
-         text-align: center !important;
-         justify-content: center !important;
-         align-items: center !important;
-     }
- }
- @media only screen and (min-width: 899.1px) {
-     .col1 {
-         width: 280px;
-         float: left;
-         margin-right: 2%;
-     }
- }
- 
- .col2 {
-     width: 602px;
-     max-width: 98%;
-     float: left;
- }
- 
- /* specific profile.html implementation ending
- ----------------------------------------------*/
- 
- /* not allowed to use <style> using classes instead*/
- .fieldset {
-     border-style: dashed;
-     background-color: white;
- }
- 
- .hr {
-     border-style: dashed;
- }
- 
- .field-layout {
-     padding-left: 1em;
-     list-style-type: none;
-     background-color: white;
-     border: solid 1px rgb(210, 210, 210);
-     border-radius: 5px;
- }
- 
- .el-vert {
-     display: flex;
- }
- 
- .li-right {
-     margin-right: 2%;
-     margin-left: auto;
-     text-decoration: none;
-     background-color: rgb(44, 113, 243);
-     color: white;
- }
- 
- .chat-timer {
-     margin-right: 2%;
-     margin-left: auto;
-     color: rgb(212, 211, 211);
- }
- 
- .blue-links {
-     color: rgb(22, 127, 251);
-     text-decoration: none;
- }
- 
- .blue-links:hover {
-     color:rgb(116, 116, 185);
-     font-weight: bold;
- }
- 
- .red-links {
-     color: red;
-     text-decoration: none;
- }
- 
- .red-links:hover {
-     color:salmon;
-     font-weight: bold;
- }
- 
- .blanco-links {
-     text-decoration: none;
-     color: black;
- }
- 
- .textinput {
-     border: solid 1px grey;
- }
- 
- 
- 
- .messageinput {
-     border: solid 1px grey;
-     height: 30px;
-     width: 75%;
-     padding-left: 12px;
- }
- 
- .messageinput::placeholder {
-     font-size: 14px;
- }
- 
- .submitbutton {
-     background-color: rgb(155, 155, 155);
-     border: none;
-     height: 34px;
-     width: 20%;
-     float: right;
-     color: white;
-     font-size: 14px;
- }
- 
- .greybutton {
-     background-color: rgb(155, 155, 155);
-     border: none;
-     height: 34px;
-     font-size: 14px;
-     color: white;
-     padding-left: 25px;
-     padding-right: 25px;
- }
- 
- .bluebutton {
-     background-color: rgb(22, 127, 251);
-     border: none;
-     height: 34px;
-     font-size: 14px;
-     color: white;
-     padding-left: 25px;
-     padding-right: 25px;
- }
- 
- .formularinput {
-     border: solid 1px grey;
-     height: 20px;
-     width: 100%;
- }
- 
- .lefttable {
-     text-align: right;   
- }
- 
- .righttable {
-     width: 150px;
- }
- 
- select {
-     -webkit-appearance: none;
-     border-radius: 0px;
-     border: solid 1px grey;
-     height: 24px;
-     width: 103%;
-     background-color: white;
- }
- 
- .settingsTextArea {
-     width: 100%;
-     font-size: 14px;
- }
- 
- .settingSelect {
-     background-image:
-     linear-gradient(45deg, transparent 50%, gray 50%),
-     linear-gradient(135deg, gray 50%, transparent 50%),
-     linear-gradient(to right, #ccc, #ccc);
-     background-position:
-         calc(100% - 15px) calc(0.8em),
-         calc(100% - 10px) calc(0.8em),
-         calc(100% - 2.5em);
-     background-size:
-         5px 5px,
-         5px 5px,
-         1px 1.5em;
-     background-repeat: no-repeat;
- }
- 
- .error-input {
-     border: 1px solid red;
-     height: 20px;
-     width: 100%;
- }
- 
- .valid-input {
-     border: 1px solid rgb(51, 231, 51);
-     height: 20px;
-     width: 100%;
- 
- }
- 
- .userList {
-     margin-left: 20px;
-     font-size: 14px;
- }
+}
+
+/* general img-layout except profile.html img */
+.general-img {
+    display: block;
+    margin: auto;
+    border-radius: 19px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    max-width: 900px;
+}
+
+/* specific profile.img implementation following*/
+.profile-fieldset {
+    background-color: white;
+    border: solid 1px rgb(210, 210, 210);
+}
+
+.profile-img {
+    width: 280px;
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.grid {
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width: 899px) {
+    .col1 {
+        width: 100%;
+        float: left;
+        margin-right: 2%;
+        text-align: center !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+}
+@media only screen and (min-width: 899.1px) {
+    .col1 {
+        width: 280px;
+        float: left;
+        margin-right: 2%;
+    }
+}
+
+.col2 {
+    width: 602px;
+    max-width: 98%;
+    float: left;
+}
+
+/* specific profile.html implementation ending
+----------------------------------------------*/
+
+/* not allowed to use <style> using classes instead*/
+.fieldset {
+    border-style: dashed;
+    background-color: white;
+}
+
+.hr {
+    border-style: dashed;
+}
+
+.field-layout {
+    padding-left: 1em;
+    list-style-type: none;
+    background-color: white;
+    border: solid 1px rgb(210, 210, 210);
+    border-radius: 5px;
+}
+
+.el-vert {
+    display: flex;
+}
+
+.li-right {
+    margin-right: 2%;
+    margin-left: auto;
+    text-decoration: none;
+    background-color: rgb(44, 113, 243);
+    color: white;
+}
+
+.chat-timer {
+    margin-right: 2%;
+    margin-left: auto;
+    color: rgb(212, 211, 211);
+}
+
+.blue-links {
+    color: rgb(22, 127, 251);
+    text-decoration: none;
+}
+
+.blue-links:hover {
+    color:rgb(116, 116, 185);
+    font-weight: bold;
+}
+
+.red-links {
+    all:unset;
+    color: red;
+    text-decoration: none;
+}
+
+.red-links:hover {
+    color:salmon;
+    font-weight: bold;
+}
+
+.blanco-links {
+    text-decoration: none;
+    color: black;
+}
+
+.textinput {
+    border: solid 1px grey;
+}
+
+
+
+.messageinput {
+    border: solid 1px grey;
+    height: 30px;
+    width: 75%;
+    padding-left: 12px;
+}
+
+.messageinput::placeholder {
+    font-size: 14px;
+}
+
+.submitbutton {
+    background-color: rgb(155, 155, 155);
+    border: none;
+    height: 34px;
+    width: 20%;
+    float: right;
+    color: white;
+    font-size: 14px;
+}
+
+.greybutton {
+    background-color: rgb(155, 155, 155);
+    border: none;
+    height: 34px;
+    font-size: 14px;
+    color: white;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.bluebutton {
+    background-color: rgb(22, 127, 251);
+    border: none;
+    height: 34px;
+    font-size: 14px;
+    color: white;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.formularinput {
+    border: solid 1px grey;
+    height: 20px;
+    width: 100%;
+}
+
+.lefttable {
+    text-align: right;   
+}
+
+.righttable {
+    width: 150px;
+}
+
+select {
+    -webkit-appearance: none;
+    border-radius: 0px;
+    border: solid 1px grey;
+    height: 24px;
+    width: 103%;
+    background-color: white;
+}
+
+.settingsTextArea {
+    width: 100%;
+    font-size: 14px;
+}
+
+.settingSelect {
+    background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+    background-position:
+        calc(100% - 15px) calc(0.8em),
+        calc(100% - 10px) calc(0.8em),
+        calc(100% - 2.5em);
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+    background-repeat: no-repeat;
+}
+
+.error-input {
+    border: 1px solid red;
+    height: 20px;
+    width: 100%;
+}
+
+.valid-input {
+    border: 1px solid rgb(51, 231, 51);
+    height: 20px;
+    width: 100%;
+
+}
+
+.userList {
+    margin-left: 20px;
+    font-size: 14px;
+}
