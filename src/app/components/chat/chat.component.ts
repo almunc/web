@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AfterViewChecked, ElementRef, ViewChild } from '@angular/core';
+import { IntervalService } from 'src/app/services/interval.service';
+import { BackendService } from '../../services/backend.service';
+
 
 @Component({
   selector: 'app-chat',
@@ -8,10 +11,11 @@ import { AfterViewChecked, ElementRef, ViewChild } from '@angular/core';
 })
 
 export class ChatComponent implements OnInit, AfterViewChecked {
+    [x: string]: any;
     // DIV für Nachrichten (s. Template) als Kind-Element für Aufrufe (s. scrollToBottom()) nutzen
     @ViewChild('messagesDiv') private myScrollContainer: ElementRef;
 
-     public constructor() { 
+    public constructor(private backendService: BackendService, private intervalService: IntervalService) { 
         this.myScrollContainer = new ElementRef(null);
     }
 
@@ -30,9 +34,30 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         }                 
     }
 
-    public ngOnInit(): void {
-        this.scrollToBottom();
-
+    public sendMsg() {
+        console.log(this.msg);
+        this.backendService.sendMessage("Tom", this.msg);
     }
 
+    public deleteFriend() {
+        if(confirm("Are you sure to unfriend Tom?")) {
+            this.backendService.removeFriend("Tom").then(res => {
+                if (res) {
+                    console.log("Friend Tom deleted");
+                }
+            })
+        }
+    }
+
+    public ngOnInit(): void {
+        this.scrollToBottom();
+        
+        this.intervalService.setInterval("ChatComponent", () => {
+            this.backendService.listMessages("Tom").then(msgs => {
+                this.msgs = msgs;
+                console.log(this.msgs);
+            })
+        })
+
+    }
 }

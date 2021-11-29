@@ -1,6 +1,33 @@
-<h1>ChatComponent works!</h1>
+<h1>
+    Chat with Tom
+</h1>
+<a href="friends" class="blue-links"> &lt;Back </a>
+<b>|</b>
+<a href="profile" class="blue-links"> Profile </a>
+<b>|</b>
+<button class="red-links" type="button" (click)="deleteFriend()"> Remove Friend </button>
+<hr style="border-style: dashed;">
 
-<div #messagesDiv>
-    <!-- hier kommen die Nachrichten rein -->
-    Nachricht 1
+<div id="msg-box" class="field-layout">
+    <!-- will be filled by js -->
+    <div *ngFor="let msg of this.msgs; let i = index" class="el-vert">
+        <p>{{msg.from}}: {{msg.msg}}</p><p class="chat-timer">{{msg.time | date: "yyyy-MM-dd HH:mm:ss"}}</p>
+    </div>
 </div>
+<hr class="hr">
+<form id="msg-form">
+    <input [(ngModel)]="msg" class="messageinput" type="text" name="message" placeholder="New Message">
+    <button id="msg-submit" class="submitbutton" type="submit" (click)="sendMsg()">Send</button>
+</form>
+
+<script>
+    window.msgBox = document.getElementById("msg-box");
+    window.messageLength = 0;
+    window.msgForm = document.getElementById("msg-form");
+    window.msgInp = document.getElementById("msg-inp");
+
+    window.chatToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjM1ODU2MzYzfQ.w-ELZ7Kml1qEPaJi9JJyQaeRh0Z6bUKK1jBWM4FWWMY";
+    window.chatCollectionId = "95caaad9-3863-4f4b-b28d-feb59be76b47";
+    window.baseURL = "https://online-lectures-cs.thi.de/chat";
+</script>
+<script defer src="js/chat.js"></script>
