@@ -19,11 +19,15 @@ export class LoginComponent implements OnInit {
     this.backendService.login(this.username, this.password).then(result=> {
       //console.log(result);
       if(result) {
-        this.router.navigate(["/friends"]);
+        this.routeTo("friends");
       } else {
         this.failed = true;
       }
     })
+  }
+
+  public routeTo(route: string) {
+    this.router.navigate([route])
   }
 
   public ngOnInit(): void {}

@@ -68,8 +68,11 @@ export class RegisterComponent implements OnInit {
     //this.createAccount();
     //if(this.passwordOk == true && this.usernameOk == true) {
     this.backendService.register(this.username, this.password);
-    this.router.navigate(["/friends"]);
+    this.routeTo("friends");
     //}
   }
 
+  public routeTo(route: string) {
+    this.router.navigate([route])
+  }
 }

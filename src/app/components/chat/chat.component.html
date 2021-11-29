@@ -1,9 +1,9 @@
 <h1>
     Chat with Tom
 </h1>
-<a href="friends" class="blue-links"> &lt;Back </a>
+<a (click)="routeTo('friends')" class="blue-links"> &lt;Friends </a>
 <b>|</b>
-<a href="profile" class="blue-links"> Profile </a>
+<a (click)="routeTo('profile')" class="blue-links"> Profile </a>
 <b>|</b>
 <button class="red-links" type="button" (click)="deleteFriend()"> Remove Friend </button>
 <hr style="border-style: dashed;">
