@@ -1,16 +1,15 @@
-<h1>FriendsComponent works!</h1>
 <body>
     <h1>Friends</h1>
     <table>
         <tr>
             <td>
-        <a href="logout.html" class="blue-links"> &lt;Logout </a>
-        <b>|</b><a href= "settings.html" class="blue-links"> Settings</a>
+        <a [routerLink]="['/logout']" class="blue-links"> &lt;Logout </a>
+        <b>|</b><a (click)="routeTo('settings')" class="blue-links"> Settings</a>
         </td>
     </tr>
     </table>
     <hr class="hr">
-    <ul class="field-layout"> <br>
+    <!--<ul class="field-layout"> <br>
         <div class="el-vert">
       <a href="chat.html" class="blanco-links"><li>Tom</li></a>
       <li class="li-right">&ensp;3&ensp;</li>
@@ -21,18 +20,32 @@
       </div> <br>
       <a href="chat.html" class="blanco-links"><li>Tick</li></a> <br>
       <a href="chat.html" class="blanco-links"><li>Trick</li></a> <br>
+    </ul>-->
+    <ul class="field-layout"> <br>
+        <div *ngFor="let friend of friends; let nr = index">
+            <div class="el-vert">
+                <a (click)="routeTo('chat')" class="blanco-links"><li>{{friend.username}}</li></a>
+                <li class="li-right">&ensp;{{friend.unreadMessages}}&ensp;</li>
+            </div>
+            <br>
+        </div>
     </ul>
     <hr class="hr">
     <h1>New Requests</h1>
     <ol>
-       <li><a href="" class="blue-links">Friend request from <b>Track</b></a></li>
+        <div *ngFor="let request of currentUser.requests; let nr = index">
+            <li><a>Friend request from <b>{{ request }}</b></a></li>
+            <button class="acceptButton" (click)="acceptRequest(request)"> Accept </button>
+            <button class="declineButton" (click)="declineRequest(request)"> Decline </button>
+        </div>
+        
     </ol>
     <hr class="hr">
     <form action="friends.html" method="get" id="friendForm">
 
-        <input class="messageinput" type="text" id="Add" name="Add" placeholder="Add Friend to List">
+        <input class="messageinput" type="text" id="Add" name="Add" placeholder="Add Friend to List" [(ngModel)]="newFriend">
 
-        <input class="submitbutton" type="submit" id="submitbutton" value="Add">
+        <button class="addButton" (click)="addFriend()"> Add </button>
     </form>
     <div id="users">
 
