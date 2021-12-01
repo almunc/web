@@ -11,12 +11,12 @@ import { SettingsComponent } from './components/settings/settings.component';
 const routes: Routes = [
     { path: '',   redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },    
-    { path: 'logout', component: LogoutComponent },    
-    { path: 'profile', component: ProfileComponent },    
-    { path: 'settings', component: SettingsComponent },    
-    { path: 'chat', component: ChatComponent },    
-    { path: 'friends', component: FriendsComponent }    
+    { path: 'register', component: RegisterComponent },
+    { path: 'logout', component: LogoutComponent },
+    { path: 'profile', component: ProfileComponent },
+    { path: 'settings', component: SettingsComponent },
+    { path: 'chat', component: ChatComponent },
+    { path: 'friends', component: FriendsComponent }
 ];
 
 @NgModule({

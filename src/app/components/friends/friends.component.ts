@@ -1,4 +1,5 @@
 import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-friends',
@@ -7,9 +8,14 @@ import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 })
 export class FriendsComponent implements OnInit {
 
-    public constructor() {
+    public constructor(private router: Router) {
     }
 
     public ngOnInit(): void {
+        this.routeTo("chat");
+    }
+
+    public routeTo(route: string) {
+        this.router.navigate([route])
     }
 }
