@@ -1,0 +1,84 @@
+<body>
+    <br><br>
+    <img src="./assets/images/user.png" alt="user" style="width: 100px; height: 100px;" class="general-img"> <br>
+    <h1 class="text-centered">
+        Register yourself
+    </h1> <br>
+    <form id="form" #RegForm="ngForm" action="friends">
+        <fieldset class="fieldset">
+            <legend>Register</legend>
+            <table class="text-centered">
+                <script>
+                    window.chatToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjM1ODU2MzYzfQ.w-ELZ7Kml1qEPaJi9JJyQaeRh0Z6bUKK1jBWM4FWWMY";
+                    window.chatCollectionId = "95caaad9-3863-4f4b-b28d-feb59be76b47";
+                    window.chatServer = "https://online-lectures-cs.thi.de/chat";
+                </script>
+                <tr>
+                    <td class="lefttable">
+                        <label for="Username">Username</label>
+                    </td>
+                    <td>
+                        <input class="formularinput" type="text" id="Username" name="Username" [(ngModel)]="username"
+                            (keyup)="checkUsername()" (keyup)="userExists()" placeholder="Username" #name="ngModel"
+                            minlength="3" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="display-msg" *ngIf="(name.touched) &&name.errors?.minlength">Username too short
+                            (min. 3 characters)</div>
+                        <div class="display-msg" *ngIf="(name.touched) && userExist == true">Username already exists
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lefttable">
+                        <label for="Password">Password</label>
+                    </td>
+                    <td>
+                        <input class="formularinput" type="password" id="Password" name="Password"
+                            [(ngModel)]="password" (keyup)="checkPassword()" placeholder="Password" #pw="ngModel"
+                            minlength="8" autocomplete="on" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="display-msg" *ngIf="(pw.touched) && pw.errors?.minlength">Password too short (min. 8
+                            characters)</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lefttable">
+                        <label for="ConfirmPassword"> Confirm Password</label>
+                    </td>
+                    <td>
+                        <input class="formularinput" type="password" id="ConfirmPassword" name="ConfirmPassword"
+                            [(ngModel)]="confirm" (keyup)="checkConfirm()" placeholder="Confirm Password" #cpw="ngModel"
+                            autocomplete="on" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="display-msg" *ngIf="(cpw.touched) && cpw.value != pw.value">Password does not match
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </fieldset> <br>
+        <!-- </form> -->
+        <table class="text-centered">
+            <tr>
+                <td>
+                    <a (click)="routeTo('login')">
+                        <input class="greybutton" type="button" value="Cancel" id="button">
+                    </a>
+                </td>
+                <td>
+                    <input class="bluebutton" type="submit" value="Create Account" (click)="createAccount()"
+                        (click)="registerUser()" [disabled]="usernameOk == false || passwordOk == false">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
