@@ -24,7 +24,7 @@
     <ul class="field-layout"> <br>
         <div *ngFor="let friend of friends; let nr = index">
             <div class="el-vert">
-                <a (click)="routeTo('chat')" class="blanco-links"><li>{{friend.username}}</li></a>
+                <a (click)="routeTo('chat', friend.username)" class="blanco-links"><li>{{friend.username}}</li></a>
                 <li class="li-right">&ensp;{{friend.unreadMessages}}&ensp;</li>
             </div>
             <br>

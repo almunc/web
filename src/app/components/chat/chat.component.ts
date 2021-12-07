@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AfterViewChecked, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ContextService } from 'src/app/services/context.service';
 import { IntervalService } from 'src/app/services/interval.service';
 import { BackendService } from '../../services/backend.service';
 
@@ -16,7 +17,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     // DIV für Nachrichten (s. Template) als Kind-Element für Aufrufe (s. scrollToBottom()) nutzen
     @ViewChild('messagesDiv') private myScrollContainer: ElementRef;
 
-    public constructor(private backendService: BackendService, private intervalService: IntervalService, private router: Router) { 
+    public constructor(private backendService: BackendService, private intervalService: IntervalService, private router: Router, public context: ContextService) { 
         this.myScrollContainer = new ElementRef(null);
     }
 
@@ -38,6 +39,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     public sendMsg() {
         console.log(this.msg);
         this.backendService.sendMessage("Tom", this.msg);
+        this.msg = "";
     }
 
     public deleteFriend() {
@@ -54,7 +56,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         this.scrollToBottom();
 
         this.intervalService.setInterval("ChatComponent", () => {
-            this.backendService.listMessages("Tom").then(msgs => {
+            this.backendService.listMessages(this.context.currentChatUsername).then(msgs => {
                 this.msgs = msgs;
                 console.log(this.msgs);
             })
@@ -62,6 +64,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     }
 
     public routeTo(route: string) {
+        this.intervalService.clearIntervals();
         this.router.navigate([route])
     }
 }
