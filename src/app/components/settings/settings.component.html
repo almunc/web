@@ -1,23 +1,23 @@
 <body>
     <h1>Profile Settings</h1>
-        <form>
+        <form #myForm="ngForm">
             <fieldset class="fieldset">
                 <legend>Base Data</legend>
                 <table class="text-centered">
                     <tr>
                         <td class="lefttable">
-                            <label for="fristName">First Name</label> 
-                        </td>
+                            <label for="firstName">First Name</label> 
+                        
                         <td class="righttable">
-                            <input class="formularinput" type="text" name="firstName" id="firstName" placeholder="Your name" [(ngModel)]="firstName">
+                            <input [(ngModel)]="firstName" class="formularinput" type="text" name="firstName" id="firstName" placeholder="Your name">
                         </td>
                     </tr>
                     <tr>
                         <td class="lefttable">
-                            <label for="fristName">Last Name</label>
+                            <label for="lastName">Last Name</label>
                         </td>
                         <td class="righttable">
-                            <input class="formularinput" type="text" name="lastName" id="lastName" placeholder="Your surname" [(ngModel)]="lastName">
+                            <input [(ngModel)]="lastName" class="formularinput" type="text" name="lastName" id="lastName" placeholder="Your surname">
                         </td>
                     </tr>
                     <tr>

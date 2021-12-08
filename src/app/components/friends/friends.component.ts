@@ -14,7 +14,10 @@ import { IntervalService } from 'src/app/services/interval.service';
 export class FriendsComponent implements OnInit {
 
     public friendsPuffer: Array<Friend> = new Array
-    public friends: Array<Friend> = new Array
+    public friendsAddedPuffer: Array<Friend> = new Array
+    public friendsAdded: Array<Friend> = new Array
+    public friendsRequestPuffer: Array<Friend> = new Array
+    public friendsRequest: Array<Friend> = new Array
     public currentUser: User = new User()
     public newFriend: string = ""
     public unreadMessages: Map<string, number> = new Map
@@ -40,34 +43,54 @@ export class FriendsComponent implements OnInit {
             this.backendservice.loadFriends().then(res =>
                 this.friendsPuffer = res
                 )
+            console.log(this.friendsPuffer)
             this.setUnreadMessages()
         })
         
     }
 
     setUnreadMessages(){
+        this.friendsAddedPuffer = new Array
+        this.friendsRequestPuffer = new Array
         this.backendservice.unreadMessageCounts().then(res =>{
             this.unreadMessages = res
                 console.log(res)
         })
         for(let i = 0; i < this.friendsPuffer.length; i++){
             this.friendsPuffer[i].unreadMessages = this.unreadMessages.get(this.friendsPuffer[i].username) as number
-            console.log(this.friendsPuffer[i].unreadMessages)
-        }
-        this.friends = this.friendsPuffer
-        /*this.backendservice.unreadMessageCounts().then(unreadMessage => {
-            for(const count of unreadMessage){
-                this.friends.
+            
+            if(this.friendsPuffer[i].unreadMessages == undefined){
+                this.friendsPuffer[i].unreadMessages = 0
             }
-        })*/
+
+            console.log(this.friendsPuffer[i].unreadMessages)
+
+            if(this.friendsPuffer[i].status == "accepted"){
+                this.friendsAddedPuffer.push(this.friendsPuffer[i])
+            } else{
+                this.friendsRequestPuffer.push(this.friendsPuffer[i])
+            }
+        }
+        this.friendsAdded = this.friendsAddedPuffer
+        this.friendsRequest = this.friendsRequestPuffer
     }
 
     acceptRequest(username: string){
         this.backendservice.acceptFriendRequest(username)
+        this.backendservice.loadFriends().then(res =>
+            this.friendsPuffer = res
+            )
+        console.log(this.friendsPuffer)
+        this.setUnreadMessages()
     }
 
     declineRequest(username: string){
         this.backendservice.dismissFriendRequest(username)
+        this.backendservice.loadFriends().then(res =>
+            this.friendsPuffer = res
+            )
+        console.log(this.friendsPuffer)
+        this.setUnreadMessages()
     }
 
     addFriend(){
