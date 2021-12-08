@@ -55,7 +55,7 @@
                 <table class="text-centered">
                 <tr>
                     <td>
-                        <a href="login.html">
+                        <a href="login.php">
                             <input class="greybutton" type="button" value="Cancel" id="button">
                             </a>
                     </td>
