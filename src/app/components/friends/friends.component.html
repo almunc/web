@@ -22,7 +22,7 @@
       <a href="chat.html" class="blanco-links"><li>Trick</li></a> <br>
     </ul>-->
     <ul class="field-layout"> <br>
-        <div *ngFor="let friend of friends; let nr = index">
+        <div *ngFor="let friend of friendsAdded; let nr = index">
             <div class="el-vert">
                 <a (click)="routeTo('chat', friend.username)" class="blanco-links"><li>{{friend.username}}</li></a>
                 <li class="li-right">&ensp;{{friend.unreadMessages}}&ensp;</li>
@@ -33,10 +33,10 @@
     <hr class="hr">
     <h1>New Requests</h1>
     <ol>
-        <div *ngFor="let request of currentUser.requests; let nr = index">
-            <li><a>Friend request from <b>{{ request }}</b></a></li>
-            <button class="acceptButton" (click)="acceptRequest(request)"> Accept </button>
-            <button class="declineButton" (click)="declineRequest(request)"> Decline </button>
+        <div *ngFor="let request of friendsRequest; let nr = index">
+            <li><a>Friend request from <b>{{ request.username }}</b></a></li>
+            <button class="acceptButton" (click)="acceptRequest(request.username)"> Accept </button>
+            <button class="declineButton" (click)="declineRequest(request.username)"> Decline </button>
         </div>
         
     </ol>

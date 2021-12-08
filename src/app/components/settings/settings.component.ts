@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Profile } from 'src/app/models/Profile';
 import { User } from 'src/app/models/User';
@@ -18,6 +19,7 @@ export class SettingsComponent implements OnInit {
     public description: string = ""
     public layout: number = 1
     public user: User = new User()
+    public profil: any
     
     public constructor(
         private backendservice: BackendService,
@@ -32,16 +34,20 @@ export class SettingsComponent implements OnInit {
                 console.log(user)
                 this.user = user
                 console.log(this.user)
+                this.setAttributes()
             } else {
                 console.log("Fehler")
             }
         })
-        if(this.user.profil){
-            this.firstName = this.user.profil.firstName
-            console.log(this.user.profil.firstName)
-            this.lastName = this.user.profil.lastName
-            this.description = this.user.profil.description
-            switch (this.user.profil.coffeeOrTea) {
+    }
+
+    setAttributes(){
+        if(this.user){
+            this.profil = this.user as any
+            this.firstName = this.profil.firstName
+            this.lastName = this.profil.lastName
+            this.description = this.profil.description
+            switch (this.profil.coffeeOrTea) {
                 case "Neither nor":
                     this.coffeeOrTea = 1
                     break;
@@ -57,7 +63,7 @@ export class SettingsComponent implements OnInit {
                 default:
                     break;
             }
-            if(this.user.profil.layout == "oneLine"){
+            if(this.profil.layout == "oneLine"){
                 this.layout = 1
             } else {
                 this.layout = 2
