@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Profile } from 'src/app/models/Profile';
 import { BackendService } from 'src/app/services/backend.service';
 import { User } from 'src/app/models/User';
+import { ContextService } from 'src/app/services/context.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { User } from 'src/app/models/User';
 })
 export class ProfileComponent implements OnInit {
     public userData: any;
-    public constructor(private backendService: BackendService, private router: Router) {
+    public constructor(private backendService: BackendService, private router: Router, public context: ContextService) {
         this.userData = {
             firstName: "",
             description: "",
@@ -21,17 +22,17 @@ export class ProfileComponent implements OnInit {
     }
 
     public deleteFriend() {
-        if(confirm("Are you sure to unfriend Tom?")) {
-            this.backendService.removeFriend("Tom").then(res => {
+        if(confirm("Are you sure to unfriend "+ this.context.currentChatUsername +"?")) {
+            this.backendService.removeFriend(this.context.currentChatUsername).then(res => {
                 if (res) {
-                    console.log("Friend Tom deleted");
+                    console.log("Friend " + this.context.currentChatUsername + " deleted");
                 }
             })
         }
     }
 
     public ngOnInit(): void {
-        this.backendService.loadUser("Tom").then((user: User | null) => {
+        this.backendService.loadUser(this.context.currentChatUsername).then((user: User | null) => {
             console.log(user);
             if (user) {
                 this.userData = user;

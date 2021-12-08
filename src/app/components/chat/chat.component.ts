@@ -38,15 +38,15 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
     public sendMsg() {
         console.log(this.msg);
-        this.backendService.sendMessage("Tom", this.msg);
+        this.backendService.sendMessage(this.context.currentChatUsername, this.msg);
         this.msg = "";
     }
 
     public deleteFriend() {
-        if(confirm("Are you sure to unfriend Tom?")) {
-            this.backendService.removeFriend("Tom").then(res => {
+        if(confirm("Are you sure to unfriend " + this.context.currentChatUsername +"?")) {
+            this.backendService.removeFriend(this.context.currentChatUsername).then(res => {
                 if (res) {
-                    console.log("Friend Tom deleted");
+                    console.log("Friend " + this.context.currentChatUsername + " deleted");
                 }
             })
         }
