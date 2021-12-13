@@ -13,7 +13,7 @@ username.addEventListener("keyup", () => {
         username.className = "valid-input";
     }
     
-   /* const xmlhttp = new XMLHttpRequest();
+    const xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = () => {
         if (xmlhttp.readyState == 4) {
             if (xmlhttp.status == 204) {
@@ -25,7 +25,7 @@ username.addEventListener("keyup", () => {
         }
     };
     xmlhttp.open("GET", `https://online-lectures-cs.thi.de/chat/95caaad9-3863-4f4b-b28d-feb59be76b47/user/${username.value}`, true);
-    xmlhttp.send();*/
+    xmlhttp.send();
 });
 
 password.addEventListener("keyup", () => {
