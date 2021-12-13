@@ -14,6 +14,47 @@
         <h1 class="text-centered">
             Register yourself
         </h1> <br>
+        <?php
+    if(isset($_POST["username"])) {
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        $confirm = $_POST["confirm"];
+        $errors = array();
+        $data = $_POST;
+
+        //validation
+        if(strlen($data["username"]) < 3) {
+            $errors[] = "Username too short";
+        }
+        if($service->userExists($username) == true) {
+            $errors[] = "Username already exists";
+        }
+        if(strlen($data["password"]) < 8) {
+            $errors[] = "Password too short";
+        }
+        if($data["password"] != $data["confirm"]) {
+            $errors[] = "Password does not match";
+        }
+
+        if(!empty($data["username"]) && strlen($data["username"]) >= 3 && $service->userExists($username) == false && !empty($data["password"]) && strlen($data["password"]) >= 8 && $data["password"] == $data["confirm"] ) {
+            $service->register($username, $password);
+            $_SESSION['user'] = $username;
+            header("Location: friends.php");
+        }else {
+            echo "
+            <p style=\"color: red;margin-left: 380px; font-weight: bold;\">Registration failed!</p>
+            ";
+        }
+        
+        if(count($errors) > 0) {
+            echo "<ul>";
+            foreach ($errors as $error) {
+                echo" <li style=\"color: red;list-style: none;\">  $error  </li>";
+            }
+            echo "</ul>";
+        }
+    }
+        ?>
         <fieldset class="fieldset">
             <legend>Register</legend>
             <table class="text-centered">
@@ -65,25 +106,5 @@
                 </tr>
                 </table>
             </form>
-        <?php
-    if(isset($_POST["username"])) {
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-        $confirm = $_POST["confirm"];
-        //echo $username . "<br>" . $password .  "<br>" . $confirm . "<br>";
-        $data = $_POST;
-        //validation
-        if(empty($data["username"]) || strlen($data["username"]) < 3 || $service->userExists($username) == $data["username"] || empty($data["password"]) || strlen($data["password"]) < 8 || $data["password"] != $data["confirm"] ) {
-            echo "
-            <p style=\"color: red;margin-left: 380px; font-weight: bold;\">Registration failed!</p>
-            ";
-        } else {
-            //echo "<br>" . "valid" . "<br>";
-            $service->register($username, $password);
-            $_SESSION['user'] = $username;
-            header("Location: friends.php");
-        }  
-    }
-        ?>
     </body>
 </html>

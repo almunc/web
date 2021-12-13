@@ -7,11 +7,9 @@
     <link href="stylesheet.css" rel="stylesheet">
     <?php
         require("start.php");
-        //Comment these or log out to be able to do further login.php implementations
         if(isset( $_SESSION['user'])) {
         header("Location: friends.php");    
         }
-        //comment till here
         ?>
     <title>Login</title>
 </head>
@@ -19,6 +17,21 @@
     <br> <br>
     <img src="images/chat.png" width="100" height="100" class="general-img"> <br>
     <h1 class="text-centered">Please sign in</h1><br>
+    <?php
+    if(isset($_POST["username"])) {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    
+    $service->login($username, $password);
+    if($service->login($username, $password) == true) {
+        $_SESSION['user'] = $username;
+        header("Location: friends.php");
+    } else 
+    echo "
+    <p style=\"color: red;margin-left: 380px; font-weight: bold;\">Authentification failed!</p>
+    ";
+    }
+    ?>
     <fieldset class="fieldset">
         <legend>Login</legend>
         <div class="text-centered">
@@ -58,21 +71,5 @@
             </tr>
         </table>
     </form>
-    <?php
-    if(isset($_POST["username"])) {
-    $username = $_POST["username"];
-    //echo $username . "<br>";
-    $password = $_POST["password"];
-    //echo $password;
-    $service->login($username, $password);
-    if($service->login($username, $password) == true) {
-        $_SESSION['user'] = $username;
-        header("Location: friends.php");
-    } else 
-    echo "
-    <p style=\"color: red;margin-left: 380px; font-weight: bold;\">Authentification failed!</p>
-    ";
-    }
-    ?>
     </body>
     </html>
