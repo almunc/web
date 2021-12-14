@@ -53,7 +53,7 @@ if(isset($_POST["username"])) {
             if(count($errors) > 0) {
                 echo "<ul>";
                 foreach ($errors as $error) {
-                    echo" <li style=\"color: red;list-style: none;\">  $error  </li>";
+                    echo '<li style="color: red;list-style: none;">' . $error . '</li>';
                 }
                 echo "</ul>";
             }
@@ -65,6 +65,7 @@ if(isset($_POST["username"])) {
             <form  id="form" action="register.php" method="POST">
                 <script>
                     //window.chatToken = "...";
+                    window.baseURL = "https://online-lectures-cs.thi.de/chat";
                     window.chatCollectionId = "<?= CHAT_SERVER_ID ?>";
                     window.chatServer = "<?= CHAT_SERVER_URL ?>";
                   </script>

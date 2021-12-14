@@ -1,3 +1,6 @@
+<?php
+require "start.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="stylesheet.css" rel="stylesheet">
-    <?php
-        require("start.php");
-        ?>
     <script defer src="js/friends.js"></script>
     <script>
         window.chatToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjM1ODU2MzYzfQ.w-ELZ7Kml1qEPaJi9JJyQaeRh0Z6bUKK1jBWM4FWWMY";

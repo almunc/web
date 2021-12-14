@@ -28,10 +28,10 @@ echo "<br>" . "Hier ist Login" . "<br>";
 var_dump($service->login("Test777", "12345678"));
 echo  "<br>" . "-------------------------------------------------------" . "<br>";
 echo "<br>" . "Hier ist Register" . "<br>";
-var_dump($service->register("Test222", "12345678"));
+var_dump($service->register("Test777", "12345678"));
 echo  "<br>" . "-------------------------------------------------------" . "<br>";
 echo "<br>" . "Hier ist UserExists" . "<br>";
-var_dump($service->userExists("Tom"));
+var_dump($service->userExists("Test777"));
 echo  "<br>" . "-------------------------------------------------------" . "<br>";
 
 ?>

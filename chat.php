@@ -55,7 +55,7 @@ echo "<script>window.partner = '{$partner}'</script>";
 
             window.chatToken = "<?= $_SESSION['chat_token'] ?>";
             window.chatCollectionId = "<?= CHAT_SERVER_ID ?>";
-            window.chatServer = "<?= CHAT_SERVER_URL ?>";
+            window.baseURL = "<?= CHAT_SERVER_URL ?>";
         </script>
         <script defer src="js/chat.js"></script>
     </body>

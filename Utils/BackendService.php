@@ -50,8 +50,9 @@ class BackendService {
 
     public function userExists($username) {
         try {
-            return HttpClient::get($this->bUrl . $username);
+            return HttpClient::get($this->bUrl . "user/" . $username);
         } catch(\Exception $e) {
+            var_dump($e);
             return false;
         }
     }
