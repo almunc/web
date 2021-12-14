@@ -19,7 +19,7 @@ setInterval(() => {
             }
         }
     };
-    xmlhttp.open("GET", `${window.baseURL}/${window.chatCollectionId}/message/Jerry`, true);
+    xmlhttp.open("GET", `${window.baseURL}/${window.chatCollectionId}/message/${window.partner}`, true);
     xmlhttp.setRequestHeader("Authorization", "Bearer " + window.chatToken);
     xmlhttp.send();
 }, 1000);
@@ -39,6 +39,6 @@ window.msgForm.addEventListener("submit", e => {
     xmlhttp.setRequestHeader("Authorization", "Bearer " + window.chatToken);
     xmlhttp.send(JSON.stringify({
         message: window.msgInp.value,
-        to: "Jerry"
+        to: window.partner
     }));
 });

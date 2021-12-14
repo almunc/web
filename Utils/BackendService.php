@@ -1,18 +1,20 @@
 <?php
 namespace Utils;
+
 class BackendService {
     private $base;
     private $id;
-
+    private $bUrl;
 
     public function __construct($base, $id) {
         $this->base = $base;
         $this->id = $id;
+        $this->bUrl = "{$base}/{$id}/";
     }
 
     public function test() {
         try {
-        return HttpClient::get($this->base . '/test.json');
+        return HttpClient::get($this->bUrl . '/test.json');
         } catch(\Exception $e) {
         error_log($e);
         }
@@ -21,12 +23,13 @@ class BackendService {
     
     public function login($username, $password) {
         try {
-            $result = HttpClient::post("https://online-lectures-cs.thi.de/chat/95caaad9-3863-4f4b-b28d-feb59be76b47/login", 
+            $result = HttpClient::post($this->bUrl . "login", 
                 array("username" => $username, "password" => $password));
             //echo "Token: " . $result->token;
             $_SESSION['chat_token'] = $result->token;
             return true;
         } catch(\Exception $e) {
+            echo $e . "<br>";
             //echo "Authentification failed" . "<br>";
             return false;
         }
@@ -34,7 +37,7 @@ class BackendService {
 
     public function register($username, $password) {
         try {
-            $result = HttpClient::post("https://online-lectures-cs.thi.de/chat/95caaad9-3863-4f4b-b28d-feb59be76b47/register", 
+            $result = HttpClient::post($this->bUrl . "register", 
                 array("username" => $username, "password" => $password));
             //echo "Token: " . $result->token;
             $_SESSION['chat_token'] = $result->token;
@@ -47,10 +50,9 @@ class BackendService {
 
     public function userExists($username) {
         try {
-            return HttpClient::get("https://online-lectures-cs.thi.de/chat/95caaad9-3863-4f4b-b28d-feb59be76b47/user/$username");
-            //echo "Exists";
+            return HttpClient::get($this->bUrl . $username);
         } catch(\Exception $e) {
-            //echo "Does not exist";
+            return false;
         }
     }
 
@@ -59,7 +61,12 @@ class BackendService {
 //dont forget to add our Collection ID
 //after that try your methods in the test.php like i did
 
-  public function loadUser($username) {
+  public function loadUser($username, $token) {
+    try {
+        return HttpClient::get($this->bUrl . "user/" . $username, $token);
+    } catch(\Exception $e) {
+        echo $e;
+    }
   }
   
   public function saveUser($user) {

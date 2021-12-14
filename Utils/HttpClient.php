@@ -96,7 +96,7 @@ class HttpClient {
         curl_setopt($ch, CURLOPT_URL, $url);
 
         //Get result as string
-        curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         //Set authorization token if provided
         if($token) {

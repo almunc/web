@@ -1,3 +1,26 @@
+<?php
+require "start.php";
+
+if(isset($_SESSION["user"])) {
+    header("Location: friends.php");
+    die;
+}
+
+if(isset($_POST["username"])) {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    
+    if($service->login($username, $password)) {
+        $_SESSION["user"] = $username;
+        header("Location: friends.php");
+        die;
+    } else {
+        echo "<p style=\"color: red;margin-left: 380px; font-weight: bold;\">
+            Authentification failed!
+        </p>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +28,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="stylesheet.css" rel="stylesheet">
-    <?php
-        require("start.php");
-        if(isset( $_SESSION['user'])) {
-        header("Location: friends.php");    
-        }
-        ?>
     <title>Login</title>
 </head>
 <body>
@@ -18,19 +35,6 @@
     <img src="images/chat.png" width="100" height="100" class="general-img"> <br>
     <h1 class="text-centered">Please sign in</h1><br>
     <?php
-    if(isset($_POST["username"])) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    
-    $service->login($username, $password);
-    if($service->login($username, $password) == true) {
-        $_SESSION['user'] = $username;
-        header("Location: friends.php");
-    } else 
-    echo "
-    <p style=\"color: red;margin-left: 380px; font-weight: bold;\">Authentification failed!</p>
-    ";
-    }
     ?>
     <fieldset class="fieldset">
         <legend>Login</legend>

@@ -1,9 +1,25 @@
+<?php
+require "start.php";
+
+//check auth
+if(empty($_SESSION["user"])) {
+    header("Location: login.php");
+    die;
+}
+
+if(empty($_GET["partner"])) {
+    header("Location: friends.php");
+    die;
+}
+
+$partner = $_GET["partner"];
+echo "<script>window.partner = '{$partner}'</script>";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <link href="stylesheet.css" rel="stylesheet">
         <?php
-        require("start.php");
         ?>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,13 +28,13 @@
     </head>
     <body>
         <h1>
-            Chat with Tom
+            Chat with <?= $partner ?>
         </h1>
-        <a href="friends.html" class="blue-links"> &lt;Back </a>
+        <a href="friends.php" class="blue-links"> &lt;Back </a>
         <b>|</b>
-        <a href="profile.html" class="blue-links"> Profile </a>
+        <a href="profile.php?user=<?= $partner ?>" class="blue-links"> Profile </a>
         <b>|</b>
-        <a href="friends.html" class="red-links"> Remove Friend </a>
+        <a href="friends.php?remove=" class="red-links"> Remove Friend </a>
         <hr style="border-style: dashed;">
 
         <div id="msg-box" class="field-layout">
@@ -37,9 +53,9 @@
             window.msgForm = document.getElementById("msg-form");
             window.msgInp = document.getElementById("msg-inp");
 
-            window.chatToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjM1ODU2MzYzfQ.w-ELZ7Kml1qEPaJi9JJyQaeRh0Z6bUKK1jBWM4FWWMY";
-            window.chatCollectionId = "95caaad9-3863-4f4b-b28d-feb59be76b47";
-            window.baseURL = "https://online-lectures-cs.thi.de/chat";
+            window.chatToken = "<?= $_SESSION['chat_token'] ?>";
+            window.chatCollectionId = "<?= CHAT_SERVER_ID ?>";
+            window.chatServer = "<?= CHAT_SERVER_URL ?>";
         </script>
         <script defer src="js/chat.js"></script>
     </body>

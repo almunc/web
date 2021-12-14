@@ -29,15 +29,15 @@
     <hr class="hr">
     <ul class="field-layout"> <br>
         <div class="el-vert">
-      <a href="chat.html" class="blanco-links"><li>Tom</li></a>
+      <a href="chat.php?partner=Tom" class="blanco-links"><li>Tom</li></a>
       <li class="li-right">&ensp;3&ensp;</li>
       </div> <br>
       <div class="el-vert">
-      <a href="chat.html" class="blanco-links"><li>Marvin</li></a>
+      <a href="chat.php?partner=Marvin" class="blanco-links"><li>Marvin</li></a>
       <li class="li-right">&ensp;1&ensp;</li>
       </div> <br>
-      <a href="chat.html" class="blanco-links"><li>Tick</li></a> <br>
-      <a href="chat.html" class="blanco-links"><li>Trick</li></a> <br>
+      <a href="chat.php?partner=Tick" class="blanco-links"><li>Tick</li></a> <br>
+      <a href="chat.php?partner=Trick" class="blanco-links"><li>Trick</li></a> <br>
     </ul>
     <hr class="hr">
     <h1>New Requests</h1>
