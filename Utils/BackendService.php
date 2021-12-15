@@ -62,9 +62,9 @@ class BackendService {
 //dont forget to add our Collection ID
 //after that try your methods in the test.php like i did
 
-  public function loadUser($username, $token) {
+  public function loadUser($username) {
     try {
-        return HttpClient::get($this->bUrl . "user/" . $username, $token);
+        return HttpClient::get($this->bUrl . "user/" . $username, $_SESSION["chat_token"]); 
     } catch(\Exception $e) {
         echo $e;
     }
@@ -85,7 +85,13 @@ class BackendService {
   public function friendDismissed($friend) {
   }
 
-  public function friendRemove($friend) {   
+  public function friendRemove($friend) {
+    try {
+        return HttpClient::delete($this->bUrl . "friend/" . $friend, $_SESSION["chat_token"]);
+    } catch(\Exception $e) {
+        error_log($e);
+    }
+    return false;
   }
 
   public function getUnread() {

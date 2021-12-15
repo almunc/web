@@ -132,7 +132,10 @@ body {
     border: solid 1px grey;
 }
 
-
+.msg-box {
+    overflow-y: scroll;
+    height: 300px;
+}
 
 .messageinput {
     border: solid 1px grey;

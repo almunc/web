@@ -11,9 +11,10 @@ if(empty($_GET["user"])) {
     die;
 }
 
-$user = $_GET["user"];
+$username = $_GET["user"];
 
-$data = $service->loadUser($user, $_SESSION["chat_token"]);
+$data = $service->loadUser($username);
+$user = Model\User::fromJson($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,13 +24,13 @@ $data = $service->loadUser($user, $_SESSION["chat_token"]);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="stylesheet.css" rel="stylesheet">
-    <title>Profile of <?= $user ?></title>
+    <title>Profile of <?= $username ?></title>
 </head>
 
 <body>
-    <h1>Profile of <?= $user ?></h1>
+    <h1>Profile of <?= $username ?></h1>
     <p>
-        <a href="chat.php?partner=<?= $user ?>" class="blue-links">&lt; Back to Chat</a>
+        <a href="chat.php?partner=<?= $username ?>" class="blue-links">&lt; Back to Chat</a>
         |
         <a href="friends.php" class="red-links">Remove Friend</a>
     </p>
@@ -40,12 +41,12 @@ $data = $service->loadUser($user, $_SESSION["chat_token"]);
         <div class="col2">
             <fieldset class="profile-fieldset">
                 <p>
-                    <?= $data->description ?>
+                    <?= $user->description ?>
                 </p>
                 <dt><b>Coffe or Tea?</b></dt>
-                <dd><?= $data->coffeeOrTea ?></dd>
+                <dd><?= $user->coffeeOrTea ?></dd>
                 <dt><b>Name</b></dt>
-                <dd><?= "{$data->firstName} {$data->lastName}" ?></dd>
+                <dd><?= "{$user->firstName} {$user->lastName}" ?></dd>
             </fieldset>
         </div>
     </div>

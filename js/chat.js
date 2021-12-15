@@ -1,8 +1,9 @@
 function appendMsg(sender, msg, time) {
     const ts = new Date(time)
     window.msgBox.innerHTML += `<div class="el-vert">
-        <p>${sender}: ${msg}</p> <p class="chat-timer"> ${ts.toLocaleTimeString()} </p>
+        <p>${sender}: ${msg}</p> <p class="chat-timer"> ${ts.toLocaleString()} </p>
     </div>`;
+    window.msgBox.scrollTop = window.msgBox.scrollHeight;
 }
 
 setInterval(() => {
@@ -41,4 +42,6 @@ window.msgForm.addEventListener("submit", e => {
         message: window.msgInp.value,
         to: window.partner
     }));
+
+    window.msgInp.value = "";
 });

@@ -7,6 +7,12 @@ if(empty($_SESSION["user"])) {
     die;
 }
 
+if (!empty($_GET["remove"])) {
+    $service->friendRemove($_GET["remove"]);
+    header("Location: friends.php");
+    die;
+}
+
 if(empty($_GET["partner"])) {
     header("Location: friends.php");
     die;
@@ -34,10 +40,10 @@ echo "<script>window.partner = '{$partner}'</script>";
         <b>|</b>
         <a href="profile.php?user=<?= $partner ?>" class="blue-links"> Profile </a>
         <b>|</b>
-        <a href="friends.php?remove=" class="red-links"> Remove Friend </a>
+        <a href="friends.php?remove=<?= $partner ?>" class="red-links"> Remove Friend </a>
         <hr style="border-style: dashed;">
 
-        <div id="msg-box" class="field-layout">
+        <div id="msg-box" class="field-layout msg-box">
             <!-- will be filled by js -->
         </div>
         <hr class="hr">
