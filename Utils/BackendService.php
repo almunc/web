@@ -29,7 +29,6 @@ class BackendService {
             $_SESSION['chat_token'] = $result->token;
             return true;
         } catch(\Exception $e) {
-            echo $e . "<br>";
             //echo "Authentification failed" . "<br>";
             return false;
         }
@@ -52,7 +51,7 @@ class BackendService {
         try {
             return HttpClient::get($this->bUrl . "user/" . $username);
         } catch(\Exception $e) {
-            var_dump($e);
+            //var_dump($e);
             return false;
         }
     }

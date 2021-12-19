@@ -15,7 +15,7 @@ if(isset($_POST["username"])) {
         header("Location: friends.php");
         die;
     } else {
-        echo "<p style=\"color: red;margin-left: 380px; font-weight: bold;\">
+        $error = "<p style=\"color: red;margin-left: 380px; font-weight: bold;\">
             Authentification failed!
         </p>";
     }
@@ -35,7 +35,9 @@ if(isset($_POST["username"])) {
     <img src="images/chat.png" width="100" height="100" class="general-img"> <br>
     <h1 class="text-centered">Please sign in</h1><br>
     <?php
-    ?>
+        if(!empty($error))
+        echo $error;
+        ?>
     <fieldset class="fieldset">
         <legend>Login</legend>
         <div class="text-centered">

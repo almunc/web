@@ -7,7 +7,6 @@ if(isset($_POST["username"])) {
     $confirm = $_POST["confirm"];
     $errors = array();
     $data = $_POST;
-
     //validation
     if(strlen($data["username"]) < 3) {
         $errors[] = "Username too short";
