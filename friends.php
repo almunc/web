@@ -1,6 +1,41 @@
 <?php
+
+use Model\Friend;
+
 require "start.php";
+
+if(empty($_SESSION["user"])) {
+    header("Location: login.php");
+    die;
+}
+
+if(isset($_POST["action"])){
+    if(!empty($_POST["addName"])){
+        $addName = $_POST["addName"];
+        $newFriend = new Model\Friend($addName, "requested");
+        $service->friendRequest($newFriend);
+    }
+}
+
+if(isset($_POST["accept"])){
+    $acceptFriend = new Model\Friend($_POST["accept"]);
+    $service->friendAccept($acceptFriend);
+}
+
+if(isset($_POST["decline"])){
+    $declineFriend = new Model\Friend($_POST["decline"]);
+    $service->friendDismissed($declineFriend);
+}
+
+if(isset($_GET["remove"])){
+    $removeFriend = new Friend($_GET["remove"]);
+    $service->friendRemove($removeFriend);
+}
+
+$friendsList = $service->loadFriends();
+$unreadMessages = $service->getUnread();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +43,10 @@ require "start.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="stylesheet.css" rel="stylesheet">
-    <script defer src="js/friends.js"></script>
     <script>
-        window.chatToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVG9tIiwiaWF0IjoxNjM1ODU2MzYzfQ.w-ELZ7Kml1qEPaJi9JJyQaeRh0Z6bUKK1jBWM4FWWMY";
-        window.chatCollectionId = "95caaad9-3863-4f4b-b28d-feb59be76b47";
-        window.baseURL = "https://online-lectures-cs.thi.de/chat";
+        window.chatToken = "<?= $_SESSION['chat_token'] ?>"; 
+        window.chatCollectionId = "<?= CHAT_SERVER_ID ?>"; 
+        window.chatServer = "<?= CHAT_SERVER_URL ?>";
     </script>
     <title>Friends</title>
 </head>
@@ -22,39 +56,57 @@ require "start.php";
         <tr>
             <td>
         <a href="logout.php" class="blue-links"> &lt;Logout </a>
-        <b>|</b><a href= "settings.html" class="blue-links"> Settings</a>
+        <b>|</b><a href= "settings.php" class="blue-links"> Settings</a>
         </td>
     </tr>
     </table>
     <hr class="hr">
     <ul class="field-layout"> <br>
-        <div class="el-vert">
-      <a href="chat.php?partner=Tom" class="blanco-links"><li>Tom</li></a>
-      <li class="li-right">&ensp;3&ensp;</li>
-      </div> <br>
-      <div class="el-vert">
-      <a href="chat.php?partner=Marvin" class="blanco-links"><li>Marvin</li></a>
-      <li class="li-right">&ensp;1&ensp;</li>
-      </div> <br>
-      <a href="chat.php?partner=Tick" class="blanco-links"><li>Tick</li></a> <br>
-      <a href="chat.php?partner=Trick" class="blanco-links"><li>Trick</li></a> <br>
+            <?php if(!empty($friendsList)){
+                foreach($friendsList as $value) { 
+                    $friendName = $value->getUsername();
+                    if(($value->getStatus()) === "accepted"){
+            ?>
+                <div class="el-vert">
+                <a href="chat.php?partner=<?= $value->getUsername()?>" class="blanco-links"><li><?= $value->getUsername()?></li></a>
+                <li class="li-right">&ensp; <?php 
+                    if(isset($unreadMessages-> $friendName)){
+                        echo $unreadMessages-> $friendName;
+                    } else {
+                        echo 0;
+                    }  
+                ?>&ensp;</li>
+                </div><br>
+            <?php }}} else { ?>
+                <div class="el-vert">
+                    <li>Keine Freunde gefunden</li>
+                </div>
+            <?php } ?>
     </ul>
     <hr class="hr">
     <h1>New Requests</h1>
     <ol>
-       <li><a href="" class="blue-links">Friend request from <b>Track</b></a></li>
+        <?php
+            foreach($friendsList as $value){
+                if(($value->getStatus()) === "requested"){
+        ?>
+            <li><a>Friend request from <b><?=$value->getUsername()?></b></a>
+            <form method="POST">
+                <button class="acceptButton" name="accept" value="<?= $value->getUsername()?>"> Accept </button>
+                <button class="declineButton" name="decline" value="<?= $value->getUsername()?>"> Decline </button></li>
+            </form>
+        <?php }} ?>
     </ol>
     <hr class="hr">
-    
-    <form action="friends.html" method="get" id="friendForm">
 
-        <input class="messageinput" type="text" id="Add" name="Add" placeholder="Add Friend to List">
+    <form method="post" id="friendForm">
 
-        <input class="submitbutton" type="submit" id="submitbutton" value="Add">
+        <input class="messageinput" type="text" id="Add" name="addName" placeholder="Add Friend to List">
+
+        <input class="submitbutton" type="submit" id="submitbutton" name="action" value="Add">
     </form>
     <div id="users">
 
     </div>
-</form>
 </body>
 </html>

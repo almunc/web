@@ -1,6 +1,8 @@
 <?php
 namespace Utils;
 
+use Model\Friend;
+
 class BackendService {
     private $base;
     private $id;
@@ -70,23 +72,59 @@ class BackendService {
   }
   
   public function saveUser($user) {
+      try {
+          return HttpClient::post($this->bUrl . "user/", $user, $_SESSION["chat_token"]);
+      } catch(\Exception $e){
+          error_log($e);
+      }
+      return false;
   }
 
   public function loadFriends() {
+      
+      try {
+          $response = HttpClient::get($this->bUrl . "friend/", $_SESSION["chat_token"]);
+          $friends = array();
+          foreach($response as $friend){
+            array_push($friends, Friend::fromJson($friend));
+          }
+          return $friends;
+      } catch(\Exception $e){
+          error_log($e);
+      } 
+      return false;
   }
 
   public function friendRequest($friend) {
+        try {
+            return HttpClient::post($this->bUrl . "friend/", $friend, $_SESSION["chat_token"]);
+        } catch(\Exception $e) {
+            error_log($e);
+        }
+        return false;
   }
 
   public function friendAccept($friend) {
+        try {
+            return HttpClient::put($this->bUrl . "friend/" . $friend->getUsername(), array("status" => "accepted"), $_SESSION["chat_token"]);
+        } catch(\Exception $e) {
+            error_log($e);
+        }
+        return false;
   }
 
   public function friendDismissed($friend) {
+        try {
+            return HttpClient::put($this->bUrl . "friend/" . $friend->getUsername(), array("status" => "dismissed"), $_SESSION["chat_token"]);
+        } catch(\Exception $e) {
+            error_log($e);
+        }
+        return false;
   }
 
   public function friendRemove($friend) {
     try {
-        return HttpClient::delete($this->bUrl . "friend/" . $friend, $_SESSION["chat_token"]);
+        return HttpClient::delete($this->bUrl . "friend/" . $friend->getUsername(), $_SESSION["chat_token"]);
     } catch(\Exception $e) {
         error_log($e);
     }
@@ -94,6 +132,12 @@ class BackendService {
   }
 
   public function getUnread() {
+      try {
+          return HttpClient::get($this->bUrl. "unread/", $_SESSION["chat_token"]);
+      } catch(\Exception $e){
+          error_log($e);
+      }
+      return false;
   }    
 }
 ?>

@@ -41,12 +41,12 @@ $user = Model\User::fromJson($data);
         <div class="col2">
             <fieldset class="profile-fieldset">
                 <p>
-                    <?= $user->description ?>
+                    <?= $user->getDescription() ?>
                 </p>
                 <dt><b>Coffe or Tea?</b></dt>
-                <dd><?= $user->coffeeOrTea ?></dd>
+                <dd><?= $user->getCoffeeOrTea() ?></dd>
                 <dt><b>Name</b></dt>
-                <dd><?= "{$user->firstName} {$user->lastName}" ?></dd>
+                <dd><?= "{$user->getFirstName()} {$user->getLastName()}" ?></dd>
             </fieldset>
         </div>
     </div>

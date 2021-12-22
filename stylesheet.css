@@ -239,3 +239,13 @@ select {
     margin-left: 20px;
     font-size: 14px;
 }
+
+.acceptButton, .declineButton {
+    background-color: rgb(155, 155, 155);
+    border: none;
+    height: 34px;
+    width: 10%;
+    color: white;
+    font-size: 14px;
+    margin: 1%;
+}
